@@ -1,0 +1,11 @@
+black
+deep-translator
+easyocr
+fastapi
+googletrans
+numpy
+opencv-python
+pillow
+python-multipart
+typing
+uvicorn
