@@ -25,11 +25,22 @@ This project utilizes optical character recognition (OCR) and translation to tra
 
 ### Docker Setup
 
-The API can also be served via Docker. The project includes both a Dockerfile and a docker-compose.yaml file. To run the API using Docker:
+The API can also be served via Docker. The project includes both a Dockerfile and a docker-compose.yaml file.
 
+-- Serving via Docker Compose --
 1. Ensure Docker and docker-compose are installed on your machine.
 2. In the project directory, run:
    `docker-compose up`
+3. (Optional) You can set the environment variable API_KEY in the docker-compose.yaml file if API key protection is desired.
+
+-- Serving via Docker Run --
+1. Ensure Docker is installed on your machine.
+2. Build the Docker image (if not already built):
+   `docker build -t image-translator .`
+3. Run the Docker container with port 8000 exposed. You may optionally set the API_KEY environment variable:
+   `docker run -p 8000:8000 -e API_KEY=your_api_key_here image-translator`
+   If no API key is needed, omit the -e API_KEY part:
+   `docker run -p 8000:8000 image-translator`
 
 ## Usage
 
@@ -37,7 +48,7 @@ The API can also be served via Docker. The project includes both a Dockerfile an
 2. Start the HTTP API:
    - If using Python directly, run:
      `python main.py`
-   - If using Docker, the API will be available as configured in docker-compose.yaml.
+   - If using Docker, the API will be available as configured in docker-compose.yaml or via the Docker run command.
 3. Use your preferred HTTP client (e.g., curl, Postman) to send requests to the API endpoints.
 4. Translated images will be saved in the `output` folder.
 
